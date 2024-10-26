@@ -1,7 +1,10 @@
 import prisma from "@/libs/prisma";
 
-const findProjectsR = async () => {
-  const projects = await prisma.projects.findMany();
+const findProjectsR = async (limit) => {
+  const projects = await prisma.projects.findMany({
+    orderBy: { createdAt: "desc" },
+    take: limit,
+  });
   return projects;
 };
 

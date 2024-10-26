@@ -1,7 +1,7 @@
 import { findProjectsR, createProjectR } from "./repository";
 
-const getAllProjects = async () => {
-  const projects = await findProjectsR();
+const getAllProjects = async (limit) => {
+  const projects = await findProjectsR(limit);
   return projects;
 };
 

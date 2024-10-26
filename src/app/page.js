@@ -1,4 +1,5 @@
-import { FaGithub, FaGlobe, FaLinkedin } from "react-icons/fa";
+import Link from "next/link";
+import { FaGithub, FaGlobe, FaLinkedin, FaBook } from "react-icons/fa";
 
 export default function Home() {
   return (
@@ -22,6 +23,22 @@ export default function Home() {
           </li>
           <li>See more about my work.</li>
         </ol>
+        <div className="mt-4 flex gap-4 items-center">
+          <Link
+            href={"/docs"}
+            className="flex items-center gap-2 justify-center border-white border-2 rounded-full p-2 px-8 hover:bg-white hover:text-black"
+          >
+            <FaBook />
+            Docs
+          </Link>
+          <Link
+            href={"https://github.com/elvxk/api-v1"}
+            target="_blank"
+            className="text-sm hover:underline"
+          >
+            Source code →
+          </Link>
+        </div>
       </main>
       <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
         <a

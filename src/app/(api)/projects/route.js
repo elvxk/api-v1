@@ -3,13 +3,18 @@ import { NextResponse } from "next/server";
 import { addCorsHeaders } from "@/libs/cors";
 
 export async function GET(req) {
-  const projects = await getAllProjects();
+  const { searchParams } = new URL(req.url);
+  const limit = searchParams.get("limit"); // Mendapatkan nilai 'limit' dari query
+
+  const projects = await getAllProjects(limit ? parseInt(limit) : undefined);
 
   const response = NextResponse.json(
     {
       code: 200,
       status: "success",
-      message: "success get all data",
+      message: limit
+        ? `Success get ${projects.length} projects (limited to ${limit})`
+        : "Success get all projects",
       data: projects,
     },
     { status: 200 },
