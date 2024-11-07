@@ -20,7 +20,7 @@ export async function GET(req) {
     { status: 200 },
   );
 
-  addCorsHeaders(response);
+  // addCorsHeaders(response);
   return response;
 }
 
@@ -37,7 +37,7 @@ export async function POST(req) {
       },
       { status: 201 },
     );
-    addCorsHeaders(response);
+    // addCorsHeaders(response);
     return response;
   } catch (error) {
     if (error.status === 400) {
@@ -51,7 +51,7 @@ export async function POST(req) {
         },
         { status: 400 },
       );
-      addCorsHeaders(response);
+      // addCorsHeaders(response);
       return response;
     }
 
@@ -63,7 +63,7 @@ export async function POST(req) {
       },
       { status: 500 },
     );
-    addCorsHeaders(response);
+    // addCorsHeaders(response);
     return response;
   }
 }
@@ -82,7 +82,7 @@ export async function DELETE(req) {
         },
         { status: 400 },
       );
-      addCorsHeaders(response);
+      // addCorsHeaders(response);
       return response;
     }
 
@@ -98,7 +98,7 @@ export async function DELETE(req) {
         },
         { status: 404 },
       );
-      addCorsHeaders(response);
+      // addCorsHeaders(response);
       return response;
     }
 
@@ -111,7 +111,7 @@ export async function DELETE(req) {
       },
       { status: 200 },
     );
-    addCorsHeaders(response);
+    // addCorsHeaders(response);
     return response;
   } catch (error) {
     const response = NextResponse.json(
@@ -122,7 +122,7 @@ export async function DELETE(req) {
       },
       { status: 500 },
     );
-    addCorsHeaders(response);
+    // addCorsHeaders(response);
     return response;
   }
 }
