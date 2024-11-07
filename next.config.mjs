@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    appDir: true, // Mengaktifkan penggunaan folder app
+  },
   async headers() {
     return [
       {
