@@ -49,6 +49,7 @@ const createProject = async (data) => {
 
 const updateProject = async (data) => {
   const validationErrors = validateProjectData(data);
+
   if (validationErrors.length > 0) {
     throw {
       status: 400,
