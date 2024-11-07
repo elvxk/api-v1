@@ -2,6 +2,7 @@ import {
   findProjectsR,
   createProjectR,
   deleteProjectByIdR,
+  updateProjectR,
 } from "./repository";
 
 const getAllProjects = async (limit) => {
@@ -46,9 +47,23 @@ const createProject = async (data) => {
   return newProject;
 };
 
+const updateProject = async (data) => {
+  const validationErrors = validateProjectData(data);
+  if (vcalidationErrors.length > 0) {
+    throw {
+      status: 400,
+      code: 400,
+      message: "Validation failed.",
+      errors: validationErrors,
+    };
+  }
+  const putProject = await updateProjectR(data);
+  return putProject;
+};
+
 const deleteProjectById = async (id) => {
   const deleteProject = await deleteProjectByIdR(id);
   return deleteProject;
 };
 
-export { getAllProjects, createProject, deleteProjectById };
+export { getAllProjects, createProject, deleteProjectById, updateProject };

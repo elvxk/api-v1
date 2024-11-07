@@ -1,4 +1,9 @@
-import { createProject, deleteProjectById, getAllProjects } from "./service";
+import {
+  createProject,
+  deleteProjectById,
+  getAllProjects,
+  updateProject,
+} from "./service";
 import { NextResponse } from "next/server";
 
 export async function GET(req) {
@@ -149,18 +154,7 @@ export async function PUT(req) {
 
   // Mencoba memperbarui data berdasarkan ID
   try {
-    const updatedLink = await prisma.projects.update({
-      where: {
-        id: request.id,
-      },
-      data: {
-        title: request.title,
-        desc: request.desc,
-        stack: request.stack,
-        demo: request.demo,
-        image: request.image,
-      },
-    });
+    const updatedLink = await updateProject(request);
 
     // Menyiapkan respons sukses
     const response = NextResponse.json(
@@ -173,7 +167,6 @@ export async function PUT(req) {
       { status: 200 },
     );
 
-    addCorsHeaders(response);
     return response;
   } catch (error) {
     // Menangani kesalahan jika data tidak ditemukan
@@ -187,7 +180,6 @@ export async function PUT(req) {
         },
         { status: 404 },
       );
-      addCorsHeaders(response);
       return response;
     }
 
@@ -200,7 +192,6 @@ export async function PUT(req) {
       },
       { status: 500 },
     );
-    addCorsHeaders(response);
     return response;
   }
 }
