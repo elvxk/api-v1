@@ -1,11 +1,26 @@
 export function addCorsHeaders(response) {
   // Header CORS
-  response.headers.set("Access-Control-Allow-Origin", "*"); // Ganti '*' dengan domain yang diizinkan
+  response.headers.set("Access-Control-Allow-Origin", "*"); // Mengizinkan akses dari semua domain
   response.headers.set(
     "Access-Control-Allow-Methods",
     "GET, POST, PUT, DELETE, OPTIONS",
   );
-  response.headers.set("Access-Control-Allow-Headers", "Content-Type");
+  response.headers.set(
+    "Access-Control-Allow-Headers",
+    "Content-Type, Authorization",
+  ); // Tambahkan header Authorization jika diperlukan
+
+  // Handle OPTIONS preflight request
+  if (response.method === "OPTIONS") {
+    return new Response(null, {
+      status: 200,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+      },
+    });
+  }
 
   // Header Keamanan
   response.headers.set(
