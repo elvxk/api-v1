@@ -1,4 +1,4 @@
-import { createProject, getAllProjects } from "./service";
+import { createProject, deleteProjectById, getAllProjects } from "./service";
 import { NextResponse } from "next/server";
 import { addCorsHeaders } from "@/libs/cors";
 
@@ -67,9 +67,6 @@ export async function POST(req) {
     return response;
   }
 }
-import { deleteProjectById } from "./service";
-import { NextResponse } from "next/server";
-import { addCorsHeaders } from "@/libs/cors";
 
 export async function DELETE(req) {
   try {
