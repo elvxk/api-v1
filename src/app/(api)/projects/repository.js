@@ -13,4 +13,9 @@ const createProjectR = async (newProjectData) => {
   return newProject;
 };
 
-export { findProjectsR, createProjectR };
+const deleteProjectByIdR = async (id) => {
+  const deleteProjectById = await prisma.projects.delete({ where: { id } });
+  return deleteProjectById;
+};
+
+export { findProjectsR, createProjectR, deleteProjectByIdR };

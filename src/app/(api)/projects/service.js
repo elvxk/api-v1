@@ -1,4 +1,8 @@
-import { findProjectsR, createProjectR } from "./repository";
+import {
+  findProjectsR,
+  createProjectR,
+  deleteProjectByIdR,
+} from "./repository";
 
 const getAllProjects = async (limit) => {
   const projects = await findProjectsR(limit);
@@ -42,4 +46,9 @@ const createProject = async (data) => {
   return newProject;
 };
 
-export { getAllProjects, createProject };
+const deleteProjectById = async (id) => {
+  const deleteProject = await deleteProjectByIdR(id);
+  return deleteProject;
+};
+
+export { getAllProjects, createProject, deleteProjectById };
